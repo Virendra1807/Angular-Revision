@@ -29,4 +29,12 @@ export class Events {
     console.log('mouse Enter ');
   }
 
+  disableProperty: boolean = true;
+
+  toggleBtn() {
+    this.disableProperty = !this.disableProperty;
+  }
+
+
+  
 }
