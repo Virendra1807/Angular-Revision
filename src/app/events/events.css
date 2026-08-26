@@ -1,0 +1,14 @@
+/* 
+
+main{
+    background-color: black;
+    color: aliceblue;
+} */
+
+
+.div1, #div2{
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+    margin: 5px 0px;
+}

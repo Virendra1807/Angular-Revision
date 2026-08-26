@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-events',
+  imports: [],
+  templateUrl: './events.html',
+  styleUrl: './events.css',
+})
+export class Events {
+
+  handleAutoComplete($event: any) {
+    console.log($event.target.value);
+  }
+
+  handleOnChange($event: any) {
+    console.log($event.target.value);
+    console.log($event);
+  }
+
+  HandleDropDownChnage(event: any) {
+    console.log(event.target.value);
+  }
+
+  handleMouseLeave() {
+    console.log('mouse Leave ');
+  }
+
+  handleMouseEnter() {
+    console.log('mouse Enter ');
+  }
+
+}

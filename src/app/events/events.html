@@ -1,0 +1,18 @@
+<main>
+    <p>events works!</p>
+
+    <input type="text" (input)="handleAutoComplete($event)" (change)="handleOnChange($event)" />
+
+    <select name="carType" (change)="HandleDropDownChnage($event)">
+        <option value="NA">-</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+    </select>
+
+    <div class="div1" (mouseenter)="handleMouseEnter()">
+
+    </div>
+    <div id="div2" (mouseleave)="handleMouseLeave()">
+
+    </div>
+</main>
