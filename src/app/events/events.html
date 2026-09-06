@@ -18,4 +18,12 @@
 
     <button class="btn btn-success" [disabled]="disableProperty">Check</button>
     <button class="btn btn-success" (click)="toggleBtn()">toggle</button>
+
+    <br />
+    <br />
+    <label for="">Model Binding - 2 way Binding</label>
+    <br />
+    <input type="text" [(ngModel)]="name">
+    <h1>{{name}}</h1>
+
 </main>

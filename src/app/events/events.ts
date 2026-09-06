@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-events',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './events.html',
   styleUrl: './events.css',
 })
@@ -35,6 +36,6 @@ export class Events {
     this.disableProperty = !this.disableProperty;
   }
 
-
+  name = 'Viren';
 
 }
