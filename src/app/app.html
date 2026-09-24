@@ -3,6 +3,17 @@
 <button routerLink="/events">Events</button>
 <button routerLink="/signals">Signals</button>
 
+<h2>Parent Child data passing - Different data like Product cards</h2>
 
+<app-child [userName]="userName()"></app-child>
+<app-child [userName]="'Kiran'"></app-child>
+<app-child [userName]="'Gopiee'"></app-child>
+
+@for(user of users(); track $index){
+<app-child [userName]="user"></app-child>
+}
+
+<input type="text" [value]="newUser()" (input)="newUser.set($event.target.value)" placeholder="Add new user here...">
+<button (click)="AddNewUser()">Add User</button>
 
 <router-outlet></router-outlet>
