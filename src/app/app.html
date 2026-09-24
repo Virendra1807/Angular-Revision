@@ -5,15 +5,19 @@
 
 <h2>Parent Child data passing - Different data like Product cards</h2>
 
-<app-child [userName]="userName()"></app-child>
+<!-- <app-child [userName]="userName()"></app-child>
 <app-child [userName]="'Kiran'"></app-child>
-<app-child [userName]="'Gopiee'"></app-child>
-
-@for(user of users(); track $index){
-<app-child [userName]="user"></app-child>
-}
+<app-child [userName]="'Gopiee'"></app-child> -->
 
 <input type="text" [value]="newUser()" (input)="newUser.set($event.target.value)" placeholder="Add new user here...">
 <button (click)="AddNewUser()">Add User</button>
+
+<h3>Selected User : {{selectedUserName()}}</h3>
+
+@for(user of users(); track $index){
+<app-child (selectedUserParent)="selectedUserParent($event)" (DeletedUserParent)="DeletedUserParent($event)"
+    [userName]="user"> </app-child>
+}
+
 
 <router-outlet></router-outlet>

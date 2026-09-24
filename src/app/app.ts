@@ -22,4 +22,15 @@ export class App {
     this.newUser.set("");
   }
 
+
+  selectedUserName = signal<string | undefined>("");
+
+  selectedUserParent(name: string | undefined) {
+    this.selectedUserName.set(name);
+  }
+
+  DeletedUserParent(user: string) {
+    this.users.update(data => data.filter((item) => item != user));
+  }
+
 }
