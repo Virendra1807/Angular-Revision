@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { TrimTextPipe } from '../custom-pipe/trim-text-pipe';
 
 @Component({
   selector: 'app-pipe-rev',
-  imports: [CommonModule],
+  imports: [CommonModule, TrimTextPipe],
   templateUrl: './pipe-rev.html',
   styleUrl: './pipe-rev.css',
 })
