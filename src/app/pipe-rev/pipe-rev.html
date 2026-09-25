@@ -1,0 +1,18 @@
+<p class="text-warning">pipe-rev works!</p>
+
+<h1>{{name() | uppercase}}</h1>
+<h1>{{name() | titlecase}}</h1>
+<h1>{{name() | lowercase}}</h1>
+
+<h2>{{todayDate}}</h2>
+<h2>{{todayDate | date:"dd"}} Day</h2>
+<h2>{{todayDate | date:"MM"}} Month</h2>
+<h2>{{todayDate | date:"yy"}} Year</h2>
+<h2>{{todayDate | date:"short"}} Short</h2>
+
+
+<h2>{{obj() | json}}</h2>
+
+<h2>{{ money | currency:"USD" }}</h2>
+<h2>{{ money | currency:"INR" }}</h2>
+<h2>{{ money | currency:"" }}</h2>
