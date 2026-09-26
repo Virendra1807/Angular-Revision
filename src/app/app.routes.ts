@@ -3,7 +3,6 @@ import { Events } from './events/events';
 import { PageNotFound } from './page-not-found/page-not-found';
 import { PipeRev } from './pipe-rev/pipe-rev';
 import { ServiceDataUser } from './service-data-user/service-data-user';
-import { SignalsRevision } from './signals-revision/signals-revision';
 
 export const routes: Routes = [
     // {
@@ -14,9 +13,11 @@ export const routes: Routes = [
         path: "events",
         component: Events
     },
+    // Lazy loading on Signals page as the Folder is loaded at the time it called. Check in inspect=. Sources
     {
         path: 'signals/:id',
-        component: SignalsRevision
+        loadComponent: () => import('./signals-revision/signals-revision').then((c) => c.SignalsRevision)
+
     },
     {
         path: 'serviceUsed',
