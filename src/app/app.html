@@ -1,7 +1,7 @@
 <h1>App - Viren Mali</h1>
 
 <button routerLink="/events">Events</button>
-<button routerLink="/signals">Signals</button>
+<button [routerLink]="['/signals', 1807]" [queryParams]="{id:1, name:'LL'}">Signals</button>
 
 <button routerLink="/serviceUsed">Service Counter</button>
 

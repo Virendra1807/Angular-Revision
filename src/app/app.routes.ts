@@ -15,7 +15,7 @@ export const routes: Routes = [
         component: Events
     },
     {
-        path: 'signals',
+        path: 'signals/:id',
         component: SignalsRevision
     },
     {
