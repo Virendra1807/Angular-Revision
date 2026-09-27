@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Child } from './child/child';
+import { DynamicComponentAtRuntime } from './dynamic-component-at-runtime/dynamic-component-at-runtime';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,17 @@ export class App {
 
   DeletedUserParent(user: string) {
     this.users.update(data => data.filter((item) => item != user));
+  }
+
+
+  @ViewChild('container', { read: ViewContainerRef })
+
+  container!: ViewContainerRef | undefined;
+
+  loadComponentDyn() {
+    this.container?.clear();
+
+    this.container?.createComponent(DynamicComponentAtRuntime);
   }
 
 }
