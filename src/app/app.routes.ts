@@ -28,6 +28,12 @@ export const routes: Routes = [
         component: PipeRev
     },
     {
+        path: "reactiveforms",
+        //component: ReactiveForms
+        loadComponent: () => import('./reactive-forms/reactive-forms').then(c => c.ReactiveForms)
+    },
+
+    {
         path: '**',
         component: PageNotFound
     }

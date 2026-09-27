@@ -1,0 +1,13 @@
+<p>reactive-forms Example</p>
+
+
+<ul>
+    <li>{{email.value}}</li>
+    <li>{{password.value}}</li>
+</ul>
+
+<input type="text" placeholder="Enter Email" [formControl]="email"><br><br>
+<input type="password" placeholder="Enter password" [formControl]="password">
+<br> <br>
+<button (click)="SubmitForm()">Submit</button>
+<button (click)="Reset()">Reset</button>
