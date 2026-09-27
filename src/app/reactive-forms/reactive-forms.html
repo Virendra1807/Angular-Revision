@@ -38,6 +38,10 @@
     @if(password?.errors?.['minlength'] && password?.touched){
     <span class="error">Password min legnth is 4 characters</span>
     }
+    @if (password?.errors?.['required'] && password?.touched) {
+    <span class="error">Password field is Required</span>
+    }
+
     <br><br>
     <button [disabled]="loginForm.invalid">Submit</button>
     <button (click)="ResetForm()">Reset</button>

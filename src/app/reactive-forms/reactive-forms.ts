@@ -27,7 +27,7 @@ export class ReactiveForms {
   loginForm = new FormGroup({
     name: new FormControl('ABC', [Validators.maxLength(10), Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.minLength(4)])
+    password: new FormControl('', [Validators.minLength(4), Validators.required])
   });
 
   get name() {
