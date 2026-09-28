@@ -1,0 +1,22 @@
+<p>template-driven-forms works!</p>
+
+<p>Form Data : {{formData | json}}</p>
+
+<form #userForm="ngForm" (ngSubmit)="AddUser(userForm.value)">
+
+    <input type="text" name="name" ngModel>
+    <br><br>
+    <input type="email" name="email" ngModel>
+    <br><br>
+    <select name="gender" ngModel>
+        <option value="">Select</option>
+        <option value="Male">male</option>
+        <option value="Female">female</option>
+    </select>
+    <br><br>
+    <input type="range" name="range" ngModel>
+
+    <br><br>
+    <button>Add User</button>
+
+</form>

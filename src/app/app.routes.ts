@@ -32,7 +32,12 @@ export const routes: Routes = [
         //component: ReactiveForms
         loadComponent: () => import('./reactive-forms/reactive-forms').then(c => c.ReactiveForms)
     },
-
+    {
+        path: "templateForms",
+        //component: ReactiveForms
+        loadComponent: () => import('./template-driven-forms/template-driven-forms')
+            .then(component => component.TemplateDrivenForms)
+    },
     {
         path: '**',
         component: PageNotFound
