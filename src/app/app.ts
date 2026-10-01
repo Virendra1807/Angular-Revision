@@ -2,6 +2,7 @@ import { Component, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Child } from './child/child';
 import { DynamicComponentAtRuntime } from './dynamic-component-at-runtime/dynamic-component-at-runtime';
+import { ProductsDetails } from './services/products-details';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { DynamicComponentAtRuntime } from './dynamic-component-at-runtime/dynami
   styleUrl: './app.css'
 })
 export class App {
+  constructor(private prodService: ProductsDetails) { }
+
   protected readonly title = signal('angular-tut');
 
   userName = signal("Viren Mali");
@@ -44,5 +47,16 @@ export class App {
 
     this.container?.createComponent(DynamicComponentAtRuntime);
   }
+
+  prods = signal<any>("");
+
+  ngOnInit() {
+    this.prodService.getProducts().subscribe((data) => {
+      this.prods.set(data.products);
+      console.log(data.products)
+    });
+
+  }
+
 
 }

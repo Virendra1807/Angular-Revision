@@ -1,5 +1,6 @@
 <h1>App - Viren Mali</h1>
 
+
 <button routerLink="/events">Events</button>
 <button [routerLink]="['/signals', 1807]" [queryParams]="{id:1, name:'LL'}">Signals</button>
 
@@ -10,9 +11,9 @@
 
 <h2>Parent Child data passing - Different data like Product cards</h2>
 
-<!-- <app-child [userName]="userName()"></app-child>
+<app-child [userName]="userName()"></app-child>
 <app-child [userName]="'Kiran'"></app-child>
-<app-child [userName]="'Gopiee'"></app-child> -->
+<app-child [userName]="'Gopiee'"></app-child>
 
 <input type="text" [value]="newUser()" (input)="newUser.set($event.target.value)" placeholder="Add new user here...">
 <button (click)="AddNewUser()">Add User</button>
@@ -33,6 +34,16 @@
 <button routerLink="/reactiveforms">Reactive Forms</button>
 <br>
 <button routerLink="/templateForms">Template Forms</button>
+
+<h3>Product List from API</h3>
+
+<ol>
+    @for(product of prods(); track product.id){
+    <li>Title : {{product.title}}</li>
+    <li>Category : {{product.category}}</li>
+    <li style="border-bottom: 1px solid grey;">Price : {{product.price}}</li>
+    }
+</ol>
 
 
 
