@@ -46,5 +46,11 @@
 </ol>
 
 
+<button (click)="getAllEmp()">Get All Employee</button>
+
+<div>
+    <span>{{showEmpList() | json}}</span>
+</div>
+
 
 <router-outlet></router-outlet>

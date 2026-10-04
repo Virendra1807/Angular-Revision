@@ -1,17 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Child } from './child/child';
 import { DynamicComponentAtRuntime } from './dynamic-component-at-runtime/dynamic-component-at-runtime';
+import { EmployeeService } from './service/employee-service';
 import { ProductsDetails } from './services/products-details';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, Child],
+  imports: [RouterOutlet, RouterLink, Child, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  constructor(private prodService: ProductsDetails) { }
+  constructor(private prodService: ProductsDetails, private empSer: EmployeeService) { }
 
   protected readonly title = signal('angular-tut');
 
@@ -56,6 +58,20 @@ export class App {
       console.log(data.products)
     });
 
+  }
+
+  showEmpList = signal<any>("");
+  getAllEmp() {
+    this.empSer.getAllEmployees().subscribe({
+      next: (data) => {
+        console.log(data[0]);
+        this.showEmpList.set(data[0]);
+      },
+      error: (err) => {
+        console.error(err.message);
+        console.error(err.status);
+      }
+    })
   }
 
 
