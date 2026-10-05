@@ -49,7 +49,37 @@
 <button (click)="getAllEmp()">Get All Employee</button>
 
 <div>
-    <span>{{showEmpList() | json}}</span>
+    <ul>
+        @for(product of showEmpList(); track product.employeeID){
+        <li>EmployeeName : {{product.employeeName}}</li>
+        <li>Designation : {{product.designation}}</li>
+        <li style="border-bottom: 1px solid grey;">Department : {{product.department}}</li>
+        }
+    </ul>
+</div>
+
+<h3>Add New Employee</h3>
+<h4 style="color: rgb(180, 255, 60)!important;">{{statusMessage()}}</h4>
+<div>
+    <form [formGroup]="AddEmpData" (ngSubmit)="addEmp()" method="post">
+
+        <label for="employeeName">Employee Name </label><br>
+        <input type="text" formControlName="employeeName"><br>
+
+        @if (formGetter.get("employeeName")?.errors?.["required"] && formGetter.get("employeeName")?.touched) {
+        <span style="color: red;">Name is required</span>
+        }
+
+        <br>
+        <label for="employeeName">Designation </label><br>
+        <input type="text" formControlName="designation"><br><br>
+        <label for="employeeName">Department</label><br>
+        <input type="text" placeholder="like IT, HR" formControlName="department"><br><br>
+
+        <button>Submit</button>
+        <button (click)="AddEmpData.reset()">Reset</button>
+
+    </form>
 </div>
 
 

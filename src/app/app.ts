@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Child } from './child/child';
+import { EmployeeModel } from './datatypes/employee-model';
 import { DynamicComponentAtRuntime } from './dynamic-component-at-runtime/dynamic-component-at-runtime';
 import { EmployeeService } from './service/employee-service';
 import { ProductsDetails } from './services/products-details';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, Child, CommonModule],
+  imports: [RouterOutlet, RouterLink, Child, CommonModule, ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -60,12 +62,12 @@ export class App {
 
   }
 
-  showEmpList = signal<any>("");
+  showEmpList = signal<EmployeeModel[]>([]);
   getAllEmp() {
     this.empSer.getAllEmployees().subscribe({
       next: (data) => {
-        console.log(data[0]);
-        this.showEmpList.set(data[0]);
+        console.log(data);
+        this.showEmpList.set(data);
       },
       error: (err) => {
         console.error(err.message);
@@ -73,6 +75,43 @@ export class App {
       }
     })
   }
+  AddEmpData = new FormGroup({
+
+    employeeName: new FormControl("", {
+      validators: [Validators.required],
+      nonNullable: true
+    }),
+
+    designation: new FormControl("FSD", {
+      nonNullable: true
+    }),
+
+    department: new FormControl<string | null>(null)
+
+  });
+
+  get formGetter() {
+    return this.AddEmpData;
+  }
+
+  statusMessage = signal<string>("");
+  addEmp() {
+    const empdata: EmployeeModel = this.AddEmpData.getRawValue();
+
+    console.log(this.AddEmpData.value);
+    if (this.AddEmpData.valid) {
+      this.empSer.addNewEmp(empdata).subscribe({
+        next: (res) => {
+          this.statusMessage.set(res);
+        },
+        error: (err) => {
+          console.log(err.message, err.status)
+          this.statusMessage.set(err.message + err.status);
+        }
+      })
+    }
+  }
+
 
 
 }
